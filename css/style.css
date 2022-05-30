@@ -51,4 +51,7 @@ ul{
 .box li a:hover{
 	color: #f64b4b;
 }
+.box li a dt:hover{
+	background-color: #f64b4b;
+}
 

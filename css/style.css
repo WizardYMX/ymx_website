@@ -6,13 +6,13 @@ body{
 }
 .box{
 	width: 450px;
-	background: rgba(21, 20, 22, 0.4);
+	background: rgba(0,0,0,0.4);
 	padding: 40px;
 	text-align: center;
 	margin: auto;
 	/* margin: initial; */
 	margin-top: 5%;
-	color: rgb(245, 240, 240);
+	color: white;
 	font-family: 'Century Gothic',sans-serif;
 }
 .box-img{
@@ -50,14 +50,5 @@ ul{
 }
 .box li a:hover{
 	color: #f64b4b;
-	/* background-color: #f64b4b; */
 }
-.box li a dt:hover{
-	background-color: #f64b4b;
-}
-/* .box li button:hover{
-	background-color: #f64b4b;
-} */
-	
-
 

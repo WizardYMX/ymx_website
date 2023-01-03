@@ -21,7 +21,7 @@
             opacity: 0.8;
         }
         .box{
-            width: 500px;
+            width: 400px;
             height: 600px;
             /* background-image: url(./img/kt1.jpg); */
             background-image:  url(./img/timg1.jpg);
@@ -131,7 +131,7 @@
 </body>
 
 <script type="text/javascript">
-    var j = window.localStorage
+    var j = window.localStorage.getItem('key')
     var arr=[]
     
     if(j == null)
@@ -152,26 +152,6 @@
                 // document.getElementById(ss).innerHTML = arr[num]
             }
         }
-    // function oload(){
-    //     if(j != null)
-    //     {
-    //         var arr = [0,0,0];
-    //         localStorage.setItem('key',JSON.stringify(arr));
-    //     }
-    //     else
-    //     {
-    //         arr=JSON.parse(localStorage.getItem('key'));
-    //         document.writeln(arr);
-    //         for(var i=1;i<=3;i++)
-    //         {
-    //             var ss = 'counter_count'+i 
-    //             num =Number(i) - 1
-    //             document.writeln(ss)
-    //             document.getElementById(ss).value = arr[num]
-    //             // document.getElementById(ss).innerHTML = arr[num]
-    //         }
-    //     }
-    // }
     
     var s1 
     var s

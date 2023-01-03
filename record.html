@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="rf_sh" http-equiv="refresh" content="1"> -->
+    <title>Document</title>
+    <script src="https://use.fontawesome.com/2287157b54.js"></script>
+    <style>
+        *{
+            /*外边距*/
+            margin: 0;
+            /*内边距*/
+            padding: 0;
+        }
+        h1{
+            font-size: 20px;
+            text-align: center;
+            color:rgb(241, 242, 244);
+            opacity: 0.8;
+        }
+        .box{
+            width: 500px;
+            height: 600px;
+            /* background-image: url(./img/kt1.jpg); */
+            background-image:  url(./img/timg1.jpg);
+
+            /* background-size: contain; */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: 50% 50%;
+            margin: 0 auto;
+            /* opacity: 0.8; */
+        }
+        
+        .box1:hover,.box2:hover,.box3:hover{
+            opacity: 0.5;
+            /* background-image: url(./img/kt1.jpeg) */
+            /* background-color: rgba(0,0,0,0~1);     */
+        }
+
+        .box1{
+            width: 260px;
+            height: 45px;
+            background-color: rgb(90, 159, 232);
+            margin: 20px auto;
+            opacity: 0.8;
+            /* padding: 0 auto; */
+        }
+        .box2{
+            width: 260px;
+            height: 45px;
+            background-color: rgb(96, 192, 55);
+            margin: 20px auto;
+            opacity: 0.8;
+        }
+        .box3{
+            width: 260px;
+            height: 45px;
+            background-color: rgb(239, 167, 32);
+            margin: 20px auto;
+            opacity: 0.8;
+        }
+        .box4{
+            width: 260px;
+            height: 45px;
+            background-color: transparent;
+            border-color: black;
+            border: 1px;
+            margin: 20px auto;
+        }
+        dt{
+            float: left;
+        }
+
+        dd{
+           float: left;
+           /* text-align: right; */
+        }
+        h1:hover,:hover,dt:hover{
+            cursor: pointer;
+        }
+        #dd_plu{
+            font-weight: 1000;
+            font-size: 20px;
+        }
+
+        #dd_plu:hover{
+            background-color: rgb(67, 214, 202);
+        }
+
+        #dd_plus{
+            color: aliceblue;
+        }
+        input{
+            width: 30px;
+            background-color: transparent;
+            text-align: center;
+        }
+     </style>
+    
+
+    <!-- <script>
+        var now_time=new Date()
+        document.write(now_time)
+    </script> -->
+</head>
+
+<body>
+    <div class="box" id="box111">
+        <h1 class="h1">习惯打卡</h1>
+        <div class="box1" id="counter_jia1" onclick="numadd('counter_count1')">
+            <dt><i class="fa fa-snowflake-o" aria-hidden="true">早课+站桩&emsp;</i></dt>
+            <dd id="dd1">共计坚持：<input id="counter_count1" type="text"> 天</dd>
+            <!-- <input id="counter_count" type="text";> -->
+            <!-- <button id="counter_jia1" onclick="numadd()" style="background-color: rgb(242, 116, 116);">+1</button> -->
+        </div>
+        <div class="box2" id="counter_jia2" onclick="numadd('counter_count2')">
+            <dt><i class="fa fa-rocket" aria-hidden="true">运动&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</i></dt>
+            <dd id="dd1">共计坚持：<input id="counter_count2" type="text"> 天</dd>
+        </div>
+        <div class="box3" id="counter_jia3" onclick="numadd('counter_count3')">
+            <dt><i class="fa fa-book" aria-hidden="true">新闻+练字&emsp;</i></dt>
+            <dd id="dd1">共计坚持：<input id="counter_count3" type="text"> 天</dd>
+        </div>
+        <div class="box4" id="dd_plu" onclick="tip_blank()">
+            <dd id="dd_plus">+添加待养成的习惯</dd>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript">
+    var j = window.localStorage
+    var arr=[]
+    
+    if(j == null)
+        {
+            var arr = [0,0,0];
+            localStorage.setItem('key',JSON.stringify(arr));
+        }
+    else
+        {
+            arr=JSON.parse(localStorage.getItem('key'));
+            // document.writeln(arr);
+            for(var i=1;i<=3;i++)
+            {
+                var ss = 'counter_count'+i 
+                num =Number(i) - 1
+                // document.writeln(ss)
+                document.getElementById(ss).value = arr[num]
+                // document.getElementById(ss).innerHTML = arr[num]
+            }
+        }
+    // function oload(){
+    //     if(j != null)
+    //     {
+    //         var arr = [0,0,0];
+    //         localStorage.setItem('key',JSON.stringify(arr));
+    //     }
+    //     else
+    //     {
+    //         arr=JSON.parse(localStorage.getItem('key'));
+    //         document.writeln(arr);
+    //         for(var i=1;i<=3;i++)
+    //         {
+    //             var ss = 'counter_count'+i 
+    //             num =Number(i) - 1
+    //             document.writeln(ss)
+    //             document.getElementById(ss).value = arr[num]
+    //             // document.getElementById(ss).innerHTML = arr[num]
+    //         }
+    //     }
+    // }
+    
+    var s1 
+    var s
+    function numadd(s1) 
+    {
+        s = s1.charAt(s1.length-1)
+        if(s==1)
+        {
+            t1 =Number(arr[0])
+            t1 = t1+1
+            document.getElementById(s1).value=t1
+            arr[0]=t1
+            localStorage.setItem('key',JSON.stringify(arr))
+        }
+        if(s==2)
+        {
+            t2 =Number(arr[1])
+            t2 = t2+1
+            document.getElementById(s1).value=t2
+            arr[1]=t2
+            localStorage.setItem('key',JSON.stringify(arr))
+        }
+        if(s==3)
+        {
+            t3 =Number(arr[2])
+            t3 = t3+1
+            document.getElementById(s1).value=t3
+            arr[2]=t3
+            localStorage.setItem('key',JSON.stringify(arr))
+        }
+        document.getElementById('box111').style.backgroundImage="url('./img/timg2.jpg')";
+        time1()
+    }
+    function tip_blank()
+    {
+        alert("功能尚在开发ing哦")
+        // document.getElementById('box111').style.backgroundImage="url('./img/kt1.jpg')";
+    }
+    setInterval
+    (
+        function time1()
+        {
+            document.getElementById('box111').style.backgroundImage="url('./img/timg1.jpg')";
+        }
+    ,3000);
+
+</script>
+</html>

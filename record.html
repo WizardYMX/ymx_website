@@ -13,6 +13,8 @@
             margin: 0;
             /*内边距*/
             padding: 0;
+            /*无法选中（文字？）*/
+            user-select: none;
         }
         h1{
             font-size: 20px;
@@ -70,6 +72,22 @@
             border: 1px;
             margin: 20px auto;
         }
+        .box5{
+           width: 50px;
+           height: 50px;
+           /* background-color: transparent;  */
+           /* opacity: 0.5; */
+           margin: 200px  75px;
+        }
+        input{
+            
+        }
+        #img_music{
+            width: 50px;
+        }
+        /* #img_music:hover{
+            opacity: 0.5;
+        } */
         dt{
             float: left;
         }
@@ -104,6 +122,7 @@
     <!-- <script>
         var now_time=new Date()
         document.write(now_time)
+        
     </script> -->
 </head>
 
@@ -112,20 +131,24 @@
         <h1 class="h1">习惯打卡</h1>
         <div class="box1" id="counter_jia1" onclick="numadd('counter_count1')">
             <dt><i class="fa fa-snowflake-o" aria-hidden="true">早课+站桩&emsp;</i></dt>
-            <dd id="dd1">共计坚持：<input id="counter_count1" type="text"> 天</dd>
+            <dd id="dd1">共计坚持：<input id="counter_count1" type="text"  onfocus="blur()"> 天</dd>
             <!-- <input id="counter_count" type="text";> -->
             <!-- <button id="counter_jia1" onclick="numadd()" style="background-color: rgb(242, 116, 116);">+1</button> -->
         </div>
         <div class="box2" id="counter_jia2" onclick="numadd('counter_count2')">
             <dt><i class="fa fa-rocket" aria-hidden="true">运动&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;</i></dt>
-            <dd id="dd1">共计坚持：<input id="counter_count2" type="text"> 天</dd>
+            <dd id="dd1">共计坚持：<input id="counter_count2" type="text"  onfocus="blur()"> 天</dd>
         </div>
         <div class="box3" id="counter_jia3" onclick="numadd('counter_count3')">
             <dt><i class="fa fa-book" aria-hidden="true">新闻+练字&emsp;</i></dt>
-            <dd id="dd1">共计坚持：<input id="counter_count3" type="text"> 天</dd>
+            <dd id="dd1">共计坚持：<input id="counter_count3" type="text"  onfocus="blur()"> 天</dd>
         </div>
         <div class="box4" id="dd_plu" onclick="tip_blank()">
             <dd id="dd_plus">+添加待养成的习惯</dd>
+        </div>
+        <div class="box5" id="music1" onclick="mu_play()">
+            <img id="img_music" src="./img/musiclogo.png" alt="请用谷歌浏览器">
+            <audio id="play1" src="./music/music1.mp3"></audio>
         </div>
     </div>
 </body>
@@ -133,7 +156,6 @@
 <script type="text/javascript">
     var j = window.localStorage.getItem('key')
     var arr=[]
-    
     if(j == null)
         {
             var arr = [0,0,0];
@@ -158,6 +180,9 @@
     function numadd(s1) 
     {
         s = s1.charAt(s1.length-1)
+        var con;
+        con = confirm("确定记录今日习惯？")
+        if(con == true){
         if(s==1)
         {
             t1 =Number(arr[0])
@@ -183,7 +208,8 @@
             localStorage.setItem('key',JSON.stringify(arr))
         }
         document.getElementById('box111').style.backgroundImage="url('./img/timg2.jpg')";
-        time1()
+        time1();
+        }//con if
     }
     function tip_blank()
     {
@@ -198,5 +224,50 @@
         }
     ,3000);
 
+    var n_music = 0
+    var timer
+    var flag = 1
+    // spin_logo()
+    function mu_play()
+    {
+        music = document.getElementById('play1')
+        // var deg_=90 
+        // document.getElementById('img_music').style.transform = "rotate("+deg_+"deg)";
+        if(n_music==0)
+        {
+            if(flag == 1){
+                window.clearInterval(timer);
+                flag = 2
+            }
+            music.play();
+            n_music = 1;
+            spin_logo(50);
+            
+        }
+        else
+        {
+            music.pause();
+            n_music = 0;
+            window.clearInterval(timer);
+        }
+    }
+    var deg_=0;
+    //图片旋转，每30毫秒旋转15度
+    function spin_logo(t)
+    {
+        // document.writeln(deg);
+        timer = setInterval(function(){
+            deg_ += 5;
+            document.getElementById('img_music').style.transform = "rotate("+deg_+"deg)";
+            if(deg_==360)
+            {
+                deg_ = 0;
+                // clearInterval(timer);
+            }
+        },t) 
+    }
+        //音乐旋转
+        spin_logo(125);
+    //
 </script>
 </html>
